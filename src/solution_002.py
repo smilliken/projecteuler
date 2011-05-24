@@ -10,11 +10,11 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 
 def solve():
     total = 0
-    nth_term, mth_term = 1, 2
-    while nth_term < 4000000:
-        if nth_term % 2 == 0:
-            total += nth_term
-        nth_term, mth_term = mth_term, nth_term + mth_term
+    n, m = 1, 2
+    while n < 4000000:
+        if n % 2 == 0:
+            total += n
+        n, m = m, n + m
     print(total)
 
 if __name__ == '__main__':
