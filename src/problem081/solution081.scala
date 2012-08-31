@@ -1,7 +1,7 @@
 object Euler081 {
     def main(args: Array[String]) {
         val lines = scala.io.Source.fromFile("matrix.txt").getLines
-        var matrix = lines.map(n => n.split(',').map(m => Integer.parseInt(m))).toArray
+        var matrix = lines.map(_.split(',').map(Integer.parseInt(_))).toArray
         for (pathlen <- 1 until 159) {
             for (col <- List(pathlen - 79, 0).max until List(pathlen + 1, 80).min) {
                 var sumcandidates = List[Int]()
