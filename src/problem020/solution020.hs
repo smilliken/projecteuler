@@ -1,1 +1,1 @@
-main = putStrLn $ show $ sum $ map(\x -> read [x]::Int) (show $ product [1..100])
+main = print . sum . map(\x -> read [x]::Int) . show . product $ [1..100]
