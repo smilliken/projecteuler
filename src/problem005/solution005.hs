@@ -1,0 +1,1 @@
+main = print . foldl (\m n -> m * n `div` (gcd m n)) 1 $ [1..20]
