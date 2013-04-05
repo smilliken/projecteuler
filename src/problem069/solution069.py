@@ -6,20 +6,18 @@ to n than a larger prime.
 import math
 
 
-def primes():
-    for n in xrange(2, 2 ** 32):
-        if not any(p for p in xrange(2, int(math.sqrt(n) + 1)) if n % p == 0):
-            yield n
+def is_prime(n):
+    return not any(a for a in xrange(2, int(math.sqrt(n)) + 1) if n % a == 0)
 
 
 def main():
     ans = 1
-    for p in primes():
-        if ans * p > 1000000:
-            break
-        ans *= p
+    for n in xrange(2, 2 ** 32):
+        if is_prime(n):
+            if ans * n > 1000000:
+                break
+            ans *= n
     print(ans)
-
 
 if __name__ == '__main__':
     main()
