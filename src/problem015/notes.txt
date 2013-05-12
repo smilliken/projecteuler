@@ -1,0 +1,6 @@
+40 total moves determine a path. If these moves were distinct and
+independent then there would be 40! possible paths. The "down" moves
+are not distinct however, and this overcounts by a factor of 20!
+(and likewise for "right" moves). So the total number of paths is
+40!/(20! * 20!). Alternatively, it can be viewed as 40 choose 20
+possible paths.
