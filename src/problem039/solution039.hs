@@ -1,5 +1,7 @@
 import Data.List (group, maximumBy, sort)
 import Data.Function (on)
-maxPerim = 1000
-main = print . fst . maximumBy (compare `on` snd) . map (\xs -> (head xs, length xs)) . group . sort $ solns
-    where solns = [truncate (x + y + z) | x <- [1..maxPerim], y <- [1..(maxPerim-x)], let z = sqrt(x ^ 2 + y ^ 2), x + y + z <= maxPerim, floor z == ceiling z]
+
+main = print . head . maximumBy (compare `on` length) . group . sort $ solns
+    where solns = let perim = 1000 in [truncate (x + y + z) |
+            x <- [1..perim], y <- [1..(perim - x)], let z = sqrt(x ^ 2 + y ^ 2),
+            x + y + z <= perim, floor z == ceiling z]
