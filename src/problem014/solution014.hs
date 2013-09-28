@@ -1,5 +1,7 @@
--- Must run with optimizations! (-O2 flag in GHC)
-import Data.List (maximumBy)
+import Data.List (foldl1')
+import Data.Ord (comparing)
+
 collatz 1 = [1]
 collatz n = n : collatz (if even n then n `div` 2 else 3 * n + 1)
-main = print . fst . maximumBy (\(_, nlen) (_, mlen) -> compare nlen mlen) . map (\n -> (n, length . collatz $ n)) $ [1..1000000]
+maximumBy' cmp = foldl1' (\a b -> case cmp a b of GT ->  a; _ -> b)
+main = print . head . maximumBy' (comparing length) . map collatz $ [1..1000000]
