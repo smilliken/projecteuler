@@ -1,0 +1,17 @@
+Let n be a d power and d-digit integer.
+
+Then, we can write n as:
+
+n = b ^ d = m * 10 ^ d
+
+where 0.1 <= m < 1.
+
+Then,
+=> b = 10 * m ^ -d
+=> 0 < b < 10
+
+Then,
+=> b ^ d = m * 10 ^ d
+=> (b / 10) ^ d = m
+=> d = ln m / ln (b / 10)
+=> d <= 21.85
