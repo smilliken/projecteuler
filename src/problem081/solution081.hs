@@ -3,17 +3,12 @@ import Data.Text (pack, unpack, splitOn)
 main = do
     content <- readFile "matrix.txt"
     let matrix = [map (\n ->  read n :: Int) . split "," $ line | line <- lines content]
-    print . head . foldl1 diagSum . diags $ matrix
-
-enum :: [a] -> [(Int, a)]
-enum xs = zip [1..] xs
+    print . minimum . foldl1 diagSum . diags $ matrix
 
 diagSum :: [Int] -> [Int] -> [Int]
-diagSum xs ys = map cellSum $ enum ys
-    where xMax = length xs
-          yMax = length ys
-          neighbor xIdx yIdx = xIdx == yIdx || (yIdx - xIdx) == (if xMax < yMax then 1 else -1)
-          cellSum (yIdx, y) = minimum [x + y | (xIdx, x) <- enum xs, neighbor xIdx yIdx]
+diagSum xs@(x0:xs') ys = map (\(a, b, c) -> a + min b c) $ zip3 ys xs0 xs1
+    where xs0 = xs ++ [head $ reverse xs]
+          xs1 = if length xs < length ys then x0:xs else xs'
 
 diags :: [[Int]] -> [[Int]]
 diags matrix = map diagByIdx $ [0..diagMax]
