@@ -1,0 +1,14 @@
+Lemma: (a + 1) ^ n = an + 1 mod a ^ 2  (by induction)
+Lemma: (a - 2) ^ n = (an - 1) * (-1) ^ (n + 1) mod a ^ 2 (by induction)
+
+(a + 1) ^ n + (a - 1) ^ n = an + 1 + (an - 1) * (-1) ^ (n + 1) mod a ^ 2
+
+n = 2k => (a + 1) ^ n + (a - 1) ^ n = 2 mod a ^ 2
+n = 2k + 1 => (a + 1) ^ n + (a - 1) ^ n = 2an mod a ^ 2
+
+a >= 3 (given), n = 1 => 2an = 2a > 2, so 2an will maximize the expression.
+
+What maximizes 2an mod a ^ 2? Alternatively, what multiple of 2a is greatest?
+If a is odd, then -a since 2 is invertible and there exists no multiple of a between
+-a and 0.
+If a is even, then -2a since 2 inverse doesn't exist, and the next highest multiple is -2a.
