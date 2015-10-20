@@ -26,18 +26,6 @@ def check(n, m):
     return is_prime(int(m + n)) and is_prime(int(n + m))
 
 
-def search(size=5):
-    groups = []
-    for p in (n for n in xrange(2 ** 31) if is_prime(n)):
-        for group in groups:
-            if all(check(p, m) for m in group):
-                group.add(p)
-            if len(group) >= size:
-                print(group)
-                return sum(group)
-        groups.append(set([p]))
-
-
 def search(size=2):
     primes = OrderedDict()
     for p in (n for n in xrange(2 ** 31) if is_prime(n)):
